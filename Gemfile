@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'carrierwave', '~> 2.2', '>= 2.2.2'
-gem 'mini_magick', '~> 4.11'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,3 +66,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'tailwindcss-rails', '~> 2.0'
+
+gem "mini_magick", "~> 4.11"
+
+gem "validate_url", "~> 1.0"
