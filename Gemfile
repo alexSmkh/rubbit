@@ -42,12 +42,18 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
+
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Better Errors
+  gem "better_errors"
+  gem "binding_of_caller"
 
   # Linters
   gem 'rubocop-performance', require: false
@@ -58,6 +64,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
+
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
@@ -67,6 +74,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'tailwindcss-rails', '~> 2.0'
 
-gem "mini_magick", "~> 4.11"
+gem 'mini_magick', '~> 4.11'
 
-gem "validate_url", "~> 1.0"
+gem 'validate_url', '~> 1.0'
+
+gem 'prettier', '~> 2.0'
+
+gem 'inline_svg', '~> 1.8'

@@ -1,9 +1,7 @@
 require 'application_system_test_case'
 
 class SubmissionsTest < ApplicationSystemTestCase
-  setup do
-    @submission = submissions(:one)
-  end
+  setup { @submission = submissions(:one) }
 
   test 'visiting the index' do
     visit submissions_url
@@ -38,9 +36,7 @@ class SubmissionsTest < ApplicationSystemTestCase
 
   test 'destroying a Submission' do
     visit submissions_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    page.accept_confirm { click_on 'Destroy', match: :first }
 
     assert_text 'Submission was successfully destroyed'
   end

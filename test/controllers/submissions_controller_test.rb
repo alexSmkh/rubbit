@@ -1,9 +1,7 @@
 require 'test_helper'
 
 class SubmissionsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @submission = submissions(:one)
-  end
+  setup { @submission = submissions(:one) }
 
   test 'should get index' do
     get submissions_url
@@ -17,7 +15,14 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create submission' do
     assert_difference('Submission.count') do
-      post submissions_url, params: { submission: { body: @submission.body, title: @submission.title, url: @submission.url } }
+      post submissions_url,
+           params: {
+             submission: {
+               body: @submission.body,
+               title: @submission.title,
+               url: @submission.url,
+             },
+           }
     end
 
     assert_redirected_to submission_url(Submission.last)
@@ -34,7 +39,14 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update submission' do
-    patch submission_url(@submission), params: { submission: { body: @submission.body, title: @submission.title, url: @submission.url } }
+    patch submission_url(@submission),
+          params: {
+            submission: {
+              body: @submission.body,
+              title: @submission.title,
+              url: @submission.url,
+            },
+          }
     assert_redirected_to submission_url(@submission)
   end
 

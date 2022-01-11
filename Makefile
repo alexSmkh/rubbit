@@ -2,4 +2,4 @@ lint:
 	bundle exec rubocop .
 
 format:
-	bundle exec rubocop . -a
+	bundle exec rbprettier --write ./app
