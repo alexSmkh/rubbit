@@ -81,3 +81,5 @@ gem 'validate_url', '~> 1.0'
 gem 'prettier', '~> 2.0'
 
 gem 'inline_svg', '~> 1.8'
+
+gem "nokogiri", "~> 1.12"

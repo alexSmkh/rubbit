@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'nokogiri'
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -20,5 +22,11 @@ module Rubbit
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.action_view.field_error_proc =
+      proc do |html_tag, _|
+        elements = Nokogiri::HTML::DocumentFragment.parse(html_tag)
+        elements.css('.input').add_class(%w[input-error input-bordered])
+        elements.to_s.html_safe
+      end
   end
 end
