@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SubmissionsControllerTest < ActionDispatch::IntegrationTest
@@ -20,8 +22,8 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
              submission: {
                body: @submission.body,
                title: @submission.title,
-               url: @submission.url,
-             },
+               url: @submission.url
+             }
            }
     end
 
@@ -44,8 +46,8 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
             submission: {
               body: @submission.body,
               title: @submission.title,
-              url: @submission.url,
-            },
+              url: @submission.url
+            }
           }
     assert_redirected_to submission_url(@submission)
   end

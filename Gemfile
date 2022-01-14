@@ -52,8 +52,8 @@ group :development do
   gem 'spring'
 
   # Better Errors
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
   # Linters
   gem 'rubocop-performance', require: false
@@ -82,4 +82,4 @@ gem 'prettier', '~> 2.0'
 
 gem 'inline_svg', '~> 1.8'
 
-gem "nokogiri", "~> 1.12"
+gem 'nokogiri', '~> 1.12'
