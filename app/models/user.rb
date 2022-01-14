@@ -10,4 +10,6 @@ class User < ApplicationRecord
          :validatable
 
   has_many :submissions, dependent: :destroy
+
+  validates_uniqueness_of :username
 end

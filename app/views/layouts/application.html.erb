@@ -88,13 +88,13 @@
         <%# ======= Dropdown ======= %>
         <div class="dropdown dropdown-hover dropdown-end flex-none">
           <div tabindex="0" class=" btn hidden md:flex items-center">
-            fasfasfs
+            <%= current_user.username.length > 10 ? current_user.username[0..10].concat('...') : current_user.username%>
           </div>
           <div
             tabindex="0"
             class="btn btn-circle flex md:hidden text-3xl items-center"
           >
-            F
+            <%= current_user.username.first%>
           </div>
           <ul
             tabindex="0"

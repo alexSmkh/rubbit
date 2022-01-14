@@ -3,10 +3,21 @@
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="form-control mb-3">
+      <%= f.label :username, class: 'label font-medium' %>
+      <%=
+        f.text_field :username,
+                      autofocus: true,
+                      class: 'input'
+      %>
+      <%=
+        render 'devise/shared/error_messages', resource: resource, field: :username
+      %>
+    </div>
+
+    <div class="form-control mb-3">
       <%= f.label :email, class: 'label font-medium' %>
       <%=
         f.email_field :email,
-                      autofocus: true,
                       autocomplete: 'email',
                       class: 'input'
       %>
