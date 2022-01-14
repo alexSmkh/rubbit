@@ -10,7 +10,9 @@
                       autocomplete: 'email',
                       class: 'input'
       %>
-      <%= render 'devise/shared/error_messages', resource: resource, field: :email %>
+      <%=
+        render 'devise/shared/error_messages', resource: resource, field: :email
+      %>
     </div>
 
     <div class="form-control mb-3">
@@ -18,7 +20,11 @@
       <%=
         f.password_field :password, autocomplete: 'new-password', class: 'input'
       %>
-      <%= render 'devise/shared/error_messages', resource: resource, field: :password %>
+      <%=
+        render 'devise/shared/error_messages',
+               resource: resource,
+               field: :password
+      %>
       <% if @minimum_password_length %>
         <%=
           render 'devise/shared/input_label',
@@ -35,7 +41,11 @@
                          autocomplete: 'new-password',
                          class: 'input'
       %>
-      <%= render 'devise/shared/error_messages', resource: resource, field: :password_confirmation %>
+      <%=
+        render 'devise/shared/error_messages',
+               resource: resource,
+               field: :password_confirmation
+      %>
     </div>
 
     <div class="actions">
@@ -46,8 +56,6 @@
   <div class="self-center btn btn-link">
     <%= render 'devise/shared/links' %>
   </div>
-
-  
 <% end %>
 
 <%= render 'devise/shared/form_wrap' %>
