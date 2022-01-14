@@ -18,6 +18,31 @@
   </head>
 
   <body class="h-screen">
+
+    <%# ====== Flash ====== %>
+
+    <% if flash[:notice].present? %>
+      <div class="w-full py-4 alert-success">
+        <div class="flex justify-center">
+          <%= inline_svg_tag 'icons/alert-info' %>
+          <label>
+            <%= flash[:notice] %>
+          </label>
+        </div>
+      </div>
+    <% end %>
+
+    <% if flash[:alert].present? %>
+      <div class="w-full py-4 alert-error">
+        <div class="flex justify-center">
+          <%= inline_svg_tag 'icons/alert-warning' %>
+          <label>
+            <%= flash[:alert] %>
+          </label>
+        </div>
+      </div>
+    <% end %>
+
     <%# ====== Navigation ====== %>
 
     <div
