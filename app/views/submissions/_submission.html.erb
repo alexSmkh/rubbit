@@ -1,30 +1,43 @@
-<div id="<%= dom_id submission %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= submission.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= submission.body %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Url:</strong>
-    <%= submission.url %>
-  </p>
-
-
- <% if submission.submission_image.large.url %>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Image:</strong>
-    <%= image_tag submission.submission_image.large.url, width: 400 %>
-  </p>
+<div
+  class="w-full rounded-xl transform duration-300 shadow-md shadow-base-content hover:shadow-lg hover:shadow-base-content overflow-hidden border border-base-content mb-6"
+>
+  <% if submission.submission_image.url %>
+    <div class="flex justify-center bg-base-200 w-full h-96 rounded-t-xl overflow-hidden">
+      <%=
+        image_tag submission.submission_image.url,
+                  class: 'object-scale-down'
+      %>
+    </div>
   <% end %>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this submission", submission, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this submission', edit_submission_path(submission), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="overflow-hidden p-2">
+    <h3 class="font-bold text-xl mb-6">
+      <%= submission.title.truncate(100) %>
+    </h3>
+
+    <p class="text-sm mb-6">
+      <%= submission.body.truncate(200) %>
+    </p>
+
+    <div>
+      <%= submission.url %>
+    </div>
+
+    <% if user_signed_in? && current_user.id == submission.user_id %>
+      <div class="flex space-x-4 pl-4 mb-4">
+        <%= link_to edit_submission_path(submission) do %>
+          <%=
+            inline_svg_tag 'icons/edit',
+                           class: 'h-6 w-6 text-base-content hover:text-primary'
+          %>
+        <% end %>
+        <%= link_to submission_path(submission), method: :delete, data: { confirm: 'Are you shure?'} do %>
+          <%=
+            inline_svg_tag 'icons/delete',
+                           class: 'h-6 w-6 text-base-content hover:text-primary'
+          %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,42 +1,75 @@
 <%= form_with(model: submission, class: "contents") do |form| %>
-  <% if submission.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+  <div class="flex items-center">
+    <span class="font-medium text-lg mr-2">Community: </span>
+    <%=
+      select_tag(
+        :community,
+        options_for_select([['JfasfasfasfasS', 1], ['Ruby', 2]]),
+        class: 'select bg-base-content text-base-100',
+      )
+    %>
+  </div>
 
-      <ul>
-        <% submission.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="divider"></div>
+
+  <div>
+    <ul class="tabs tabs-boxed h-16 font-bold">
+      <li class="tab basis-1/3 h-full">
+        <%= inline_svg_tag 'icons/text', class: 'h-6 w-6 mr-1' %>
+      </li>
+      <li class="tab tab-active basis-1/3 h-full text-xl">
+        <%= inline_svg_tag 'icons/image', class: 'h-6 w-6 mr-1' %> / <%= inline_svg_tag 'icons/video', class: 'h-6 w-6 mx-1' %> </li>
+      <li class="tab basis-1/3 h-full">
+        <%= inline_svg_tag 'icons/link', class: 'h-6 w-6 mr-1' %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-control mb-3">
+    <%= form.label :title, class: 'label font-medium' %>
+    <%= form.text_field :title, class: 'input bg-base-content text-base-100' %>
+  </div>
+
+  <div class="form-control mb-3" data-content="text">
+    <%= form.label :body, class: 'label font-medium' %>
+    <%=
+      form.text_area :body,
+                     rows: 8,
+                     class: 'textarea  bg-base-content text-base-100'
+    %>
+  </div>
+
+  <div class="form-control mb-5" data-content="url">
+    <%= form.label :url, class: 'label font-medium' %>
+    <%=
+      form.text_field :url,
+                      class: 'input bg-base-content text-base-100',
+                      type: 'url'
+    %>
+  </div>
+
+  <div data-content="image-video">
+    <div class="form-control mb-3">
+      <%= form.label :submission_image, class: 'label font-medium flex justify-center items-center basis-46 grow-0 shrink-0 h-12 bg-base-content rounded-xl text-base-100 hover:bg-base-200 hover:text-base-content transform duration-300 cursor-pointer' do %>
+        <%= inline_svg_tag 'icons/image', class: 'h-8 w-8 mr-2' %>
+        <span class=" font-medium">Upload Image</span>
+      <% end %>
+      <%= form.file_field :submission_image, class: 'hidden' %>
     </div>
-  <% end %>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+    <div class="divider">OR</div>
 
-  <div class="my-5">
-    <%= form.label :body %>
-    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :url %>
-    <%= form.text_field :url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :submission_image %>
-    <%= form.file_field :submission_image, class: "ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :submission_video %>
-    <%= form.file_field :submission_video, class: "ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    <div class="form-control mb-3">
+      <%= form.label :submission_video, class: 'label font-medium flex justify-center items-center w-46 h-12 bg-base-content rounded-xl text-base-100 hover:bg-base-200 hover:text-base-content transform duration-300 cursor-pointer' do %>
+        <%= inline_svg_tag 'icons/video', class: 'h-8 w-8 mr-2' %>
+        <span class="font-medium">Upload Video</span>
+      <% end %>
+      <%= form.file_field :submission_video, class: 'hidden' %>
+    </div>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
+
