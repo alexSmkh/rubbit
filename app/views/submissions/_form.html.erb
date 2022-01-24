@@ -2,10 +2,11 @@
   <div class="flex items-center">
     <span class="font-medium text-lg mr-2">Community: </span>
     <%=
-      select_tag(
-        :community,
-        options_for_select([['JfasfasfasfasS', 1], ['Ruby', 2]]),
-        class: 'select bg-base-content text-base-100',
+      form.select(
+        :community_id,
+        Community.all.map { |community| [community.name, community.id] },
+        { prompt: 'Select a community' },
+        { class: 'select bg-base-content text-base-100' },
       )
     %>
   </div>
