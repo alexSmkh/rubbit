@@ -12,14 +12,16 @@
 
   <div class="divider"></div>
 
-  <div>
+  <div id="submission-form-tabs">
     <ul class="tabs tabs-boxed h-16 font-bold">
-      <li class="tab basis-1/3 h-full">
+      <li class="tab tab-active basis-1/3 h-full" data-tab="text">
         <%= inline_svg_tag 'icons/text', class: 'h-6 w-6 mr-1' %>
       </li>
-      <li class="tab tab-active basis-1/3 h-full text-xl">
-        <%= inline_svg_tag 'icons/image', class: 'h-6 w-6 mr-1' %> / <%= inline_svg_tag 'icons/video', class: 'h-6 w-6 mx-1' %> </li>
-      <li class="tab basis-1/3 h-full">
+      <li class="tab basis-1/3 h-full" data-tab="files">
+        <%= inline_svg_tag 'icons/image', class: 'h-6 w-6 mr-1' %> /
+        <%= inline_svg_tag 'icons/video', class: 'h-6 w-6 mx-1' %>
+      </li>
+      <li class="tab basis-1/3 h-full" data-tab="link">
         <%= inline_svg_tag 'icons/link', class: 'h-6 w-6 mr-1' %>
       </li>
     </ul>
@@ -39,7 +41,7 @@
     %>
   </div>
 
-  <div class="form-control mb-5" data-content="url">
+  <div class="form-control mb-5" data-content="link">
     <%= form.label :url, class: 'label font-medium' %>
     <%=
       form.text_field :url,
@@ -48,8 +50,8 @@
     %>
   </div>
 
-  <div data-content="image-video">
-    <div class="form-control mb-3">
+  <div data-content="files">
+    <div class="mb-3 w-1/4">
       <%= form.label :submission_image, class: 'label font-medium flex justify-center items-center basis-46 grow-0 shrink-0 h-12 bg-base-content rounded-xl text-base-100 hover:bg-base-200 hover:text-base-content transform duration-300 cursor-pointer' do %>
         <%= inline_svg_tag 'icons/image', class: 'h-8 w-8 mr-2' %>
         <span class=" font-medium">Upload Image</span>
@@ -57,9 +59,9 @@
       <%= form.file_field :submission_image, class: 'hidden' %>
     </div>
 
-    <div class="divider">OR</div>
+    <div class="divider  w-1/4">OR</div>
 
-    <div class="form-control mb-3">
+    <div class="mb-3 w-1/4">
       <%= form.label :submission_video, class: 'label font-medium flex justify-center items-center w-46 h-12 bg-base-content rounded-xl text-base-100 hover:bg-base-200 hover:text-base-content transform duration-300 cursor-pointer' do %>
         <%= inline_svg_tag 'icons/video', class: 'h-8 w-8 mr-2' %>
         <span class="font-medium">Upload Video</span>
@@ -72,4 +74,3 @@
     <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
-

@@ -15,6 +15,7 @@
                           'data-turbolinks-track': 'reload'
     %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :javascript_includes %>
   </head>
 
   <body class="h-screen flex flex-col">

@@ -1,3 +1,7 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_pack_tag 'tabs', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <% content_for :primary_content do %>
   <div class="my-12 mx-auto  w-full">
     <h1 class="font-bold mb-6 text-4xl">Create a Submission</h1>
@@ -15,5 +19,6 @@
     <%= render 'guidelines' %>
   </div>
 <% end %>
+
 
 <%= render 'basic_layout' %>
