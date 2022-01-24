@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
 
+  has_many :communities
   has_many :submissions, dependent: :destroy
 
   validates_uniqueness_of :username
