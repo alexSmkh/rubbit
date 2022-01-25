@@ -1,6 +1,8 @@
 <% content_for :javascript_includes do %>
-  <%= javascript_pack_tag 'components/tabs', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'tabs', 'data-turbolinks-track': 'reload' %>
 <% end %>
+
+<% content_for :community_label, "Edit Submission" %>
 
 <%= content_for :primary_content do %>
   <div class="mx-auto my-12 py-2 md:py-0 w-full">

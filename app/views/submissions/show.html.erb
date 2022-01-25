@@ -1,3 +1,5 @@
+<% content_for :community_label, @submission.title.truncate(15) %>
+
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
     <% if notice.present? %>
