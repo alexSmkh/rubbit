@@ -1,0 +1,5 @@
+<% if resource.errors.any? %>
+  <% resource.errors.full_messages_for(field).each do |msg| %>
+    <%= render 'form_input_label', text: msg, classes: 'text-error' %>
+  <% end %>
+<% end %>

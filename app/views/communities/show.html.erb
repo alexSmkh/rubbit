@@ -1,17 +1,30 @@
-<% content_for :community_label, "r/#{@community.name}" %>
+<%= content_for :community_label, "r/#{@community.name}" %>
 
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @community %>
-
-    <%= link_to 'Edit this community', edit_community_path(@community), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this community', community_path(@community), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<div class="grow">
+  <h1
+    class="font-bold bg-accent text-3xl md:text-4xl  mb-2 md:mb-10 pl-12 py-4 md:py-8 text-base-100 rounded-b-lg"
+  >
+    <%= "r/#{@community.title}" %>
+  </h1>
+  <%= content_for :primary_content do %>
+    <div>
+      <% @community.submissions.each do |submission| %>
+        <%= render 'submissions/submission', submission: submission %>
+      <% end %>
     </div>
-    <%= link_to 'Back to communities', communities_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  </div>
+  <% end %>
+
+  <%= content_for :secondary_content do %>
+    <div >
+      <%= link_to new_submission_path, class: 'hidden md:flex btn btn-primary w-full' do %>
+        <%= inline_svg_tag 'icons/add', class: 'h-6 w-6 mr-1' %>
+        <span>Create Submission</span>
+      <% end %>
+      <%= render 'sidebar', community: @community %>
+    </div>
+  <% end %>
+
+  <%= render 'add_btn', path: new_submission_path %>
+
+  <%= render 'basic_layout' %>
 </div>

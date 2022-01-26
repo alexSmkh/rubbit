@@ -1,16 +1,28 @@
-<% content_for :community_label, "All Communities" %>
+<% content_for :community_label, 'All Communities' %>
 
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<div class="grow">
+  <h1
+    class="font-bold bg-accent text-3xl md:text-4xl  mb-2 md:mb-10 pl-12 py-4 md:py-8 text-base-100 rounded-b-lg"
+  >
+    Communities
+  </h1>
+
+  <% content_for :primary_content do %>
+    <%= render @communities %>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Communities</h1>
-    <%= link_to 'New community', new_community_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+  <% content_for :secondary_content do %>
+    <div
+      class="py-8 flex justify-center items-center border border-base-content rounded-xl shadow shadow-base-content hover:shadow-lg hover:shadow-base-content overflow-hidden trasform-color duration-300"
+    >
+      <%= link_to new_community_path, class: 'btn btn-primary transform-color duration-300' do %>
+        <%= inline_svg_tag 'icons/add', class: 'h-6 w-6' %>
+        Create Community
+      <% end %>
+    </div>
+  <% end %>
 
-  <div id="communities" class="min-w-full">
-    <%= render @communities %>
-  </div>
+  <%= render 'add_btn', path: new_community_path %>
+
+  <%= render 'basic_layout' %>
 </div>

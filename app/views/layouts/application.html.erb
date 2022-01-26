@@ -56,7 +56,7 @@
 
         <% if user_signed_in? %>
           <div class="dropdown ml-2">
-            <div tabindex="0" class="m-1 btn w-24 text-xs sm:w-40 md:w-56 md:text-base">
+            <div tabindex="0" class="m-1 btn w-24 text-xs sm:w-40 md:w-56 md:text-base lowercase">
               <%= content_for?(:community_label) ? yield(:community_label) : 'Select a community' %>  
             </div>
             <ul
@@ -164,7 +164,7 @@
     </nav>
 
     <main class="container mx-auto flex-1 flex">
-      <%= yield %>
+      <%= content_for?(:content) ? yield(:content) : yield %> 
     </main>
   </body>
 </html>

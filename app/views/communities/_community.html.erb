@@ -1,27 +1,40 @@
-<div id="<%= dom_id community %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= community.name %>
-  </p>
+<div
+  class="flex mb-4 last:mb-0 p-8 border border-base-content transform duration-300 rounded-xl shadow-md shadow-base-content hover:shadow-lg hover:shadow-base-content"
+>
+  <div class="flex-1">
+    <%= link_to community_path(community), class: 'font-bold text-xl cursor-alias flex items-center hover:text-primary transform-color duration-300' do %>
+      <%= inline_svg_tag 'icons/community', class: 'h-6 w-6 mr-1 inline-block' %>
+      <%= "r/#{community.title}" %>
+    <% end %>
+    <p class="text-sm font-light pl-7">
+      <%= community.name %>
+    </p>
+  </div>
+  <div class="flex items-center space-x-1">
+    <%= link_to community_path(community) do %>
+      <%=
+        inline_svg_tag 'icons/show',
+                       class:
+                         'h-6 w-6 hover:text-primary transform-color duration-300 cursor-pointer'
+      %>
+    <% end %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= community.title %>
-  </p>
+    <% if community.user_id == current_user.id %>
+      <%= link_to edit_community_path(community) do %>
+        <%=
+          inline_svg_tag 'icons/edit',
+                         class:
+                           'h-6 w-6 hover:text-primary transform-color duration-300 cursor-pointer'
+        %>
+      <% end %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= community.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Sidebar:</strong>
-    <%= community.sidebar %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this community", community, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this community', edit_community_path(community), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+      <%= link_to community_path(community), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%=
+          inline_svg_tag 'icons/delete',
+                         class:
+                           'h-6 w-6 hover:text-primary transform-color duration-300 cursor-pointer'
+        %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

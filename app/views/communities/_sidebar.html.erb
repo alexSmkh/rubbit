@@ -1,0 +1,55 @@
+<div
+  class="mt-12 border border-base-content shadow shadow-base-content hover:shadow-lg hover:shadow-base-content rounded-xl transform-color duration-300"
+>
+  <div
+    class="flex justify-center items-center py-2 font-bold text-xl text-base-200 bg-accent rounded-t-xl"
+  >
+    Community details
+  </div>
+  <div class="p-6">
+    <div class="flex justify-between mt-4">
+      <div class="flex items-center font-semibold text-sm tracking-tight">
+        <%= inline_svg_tag 'icons/community', class: 'h-6 w-6 mr-1' %>
+        <%= "r/#{community.title}" %>
+      </div>
+      <% if community.user_id == current_user.id %>
+        <%= link_to edit_community_path(community) do %>
+          <%=
+            inline_svg_tag 'icons/edit',
+                           class:
+                             'h-5 w-5 hover:text-primary transform-color duration-300'
+          %>
+        <% end %>
+      <% end %>
+    </div>
+    <h3 class="font-bold text-xl lg:text-2xl mb-10">
+      <%= community.name %>
+    </h3>
+
+    <%= link_to 'Unsubscribe', '#', class: 'btn btn-outline w-full mb-6' %>
+
+    <div class="flex">
+      <div class="flex flex-col justify-center items-center flex-1 py-2 font-bold text-sm lg:text-base">
+        <span><%= community.submissions.count %></span>
+        <span><%= "Submission".pluralize(community.submissions.count) %></span>
+      </div>
+      <div class="divider divider-vertical"></div>
+      <div class="flex flex-col justify-center items-center flex-1 py-2 font-bold text-sm lg:text-base">
+        <span>22</span>
+        <span>Subscribers</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <p class="tracking-tighter lg:tracking-normal">
+      <%= community.description %>
+    </p class="tracking-tighter lg:tracking-normal">
+    <% if community.sidebar? %>
+      <div>
+        <div class="divider"></div>
+        <p>
+          <%= community.sidebar %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

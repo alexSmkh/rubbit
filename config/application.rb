@@ -26,7 +26,8 @@ module Rubbit
     config.action_view.field_error_proc =
       proc do |html_tag, _|
         elements = Nokogiri::HTML::DocumentFragment.parse(html_tag)
-        elements.css('.input').add_class(%w[input-error input-bordered])
+        elements.css('.input').add_class('input-bordered input-error')
+        elements.css('.textarea').add_class('textarea-bordered textarea-success')
         elements.to_s.html_safe
       end
     # rubocop:enable Rails/OutputSafety
