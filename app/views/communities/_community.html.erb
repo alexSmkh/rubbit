@@ -19,7 +19,7 @@
       %>
     <% end %>
 
-    <% if community.user_id == current_user.id %>
+    <% if author_of?(community) %>
       <%= link_to edit_community_path(community) do %>
         <%=
           inline_svg_tag 'icons/edit',
