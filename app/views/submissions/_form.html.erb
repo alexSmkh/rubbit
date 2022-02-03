@@ -52,22 +52,26 @@
   </div>
 
   <div data-content="files">
-    <div class="mb-3 w-1/4">
-      <%= form.label :submission_image, class: 'label font-medium flex justify-center items-center basis-46 grow-0 shrink-0 h-12 bg-base-content rounded-xl text-base-100 hover:bg-base-200 hover:text-base-content transform duration-300 cursor-pointer' do %>
-        <%= inline_svg_tag 'icons/image', class: 'h-8 w-8 mr-2' %>
-        <span class=" font-medium">Upload Image</span>
+    <div class="mb-3">
+      <%= form.label :submission_image, class: 'inline-flex' do %>
+        <%= inline_svg_tag 'icons/image', class: 'h-10 w-10 mr-2' %>
+        <%=
+          form.file_field :submission_image,
+                          class:
+                            'block text-sm text-base-content file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-base-content file:cursor-pointer file:text-base-100 hover:file:bg-base-100 hover:file:text-base-content file:transform file:duration-300'
+        %>
       <% end %>
-      <%= form.file_field :submission_image, class: 'hidden' %>
     </div>
 
-    <div class="divider  w-1/4">OR</div>
-
-    <div class="mb-3 w-1/4">
-      <%= form.label :submission_video, class: 'label font-medium flex justify-center items-center w-46 h-12 bg-base-content rounded-xl text-base-100 hover:bg-base-200 hover:text-base-content transform duration-300 cursor-pointer' do %>
-        <%= inline_svg_tag 'icons/video', class: 'h-8 w-8 mr-2' %>
-        <span class="font-medium">Upload Video</span>
+    <div class="mb-3">
+      <%= form.label :submission_video, class: 'inline-flex' do %>
+        <%= inline_svg_tag 'icons/video', class: 'h-10 w-10 mr-2 ' %>
+        <%=
+          form.file_field :submission_video,
+                          class:
+                            'block text-sm text-base-content file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-base-content file:cursor-pointer file:text-base-100 hover:file:bg-base-100 hover:file:text-base-content file:transform file:duration-300'
+        %>
       <% end %>
-      <%= form.file_field :submission_video, class: 'hidden' %>
     </div>
   </div>
 
