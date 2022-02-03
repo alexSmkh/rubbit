@@ -1,4 +1,22 @@
 <%= form_with(model: submission, class: "contents") do |form| %>
+  <% if submission.errors.any? %>
+    <div id="error_explanation" class="alert alert-error flex-col">
+      <div>
+        <%= inline_svg_tag 'icons/alert-error' %>
+        <span class="font-bold">
+          <%= pluralize(submission.errors.count, 'error') %> prohibited this
+          submission from being saved:
+        </span>
+      </div>
+
+      <ul class="flex flex-col list-disc list-inside">
+        <% submission.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="flex items-center">
     <span class="font-medium text-lg mr-2">Community: </span>
     <%=
