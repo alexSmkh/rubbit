@@ -10,12 +10,24 @@
 
 <% content_for :secondary_content do %>
   <div
-    class="py-8 flex justify-center items-center border border-base-content rounded-xl shadow shadow-base-content hover:shadow-lg hover:shadow-base-content overflow-hidden trasform-color duration-300"
+    class="flex flex-col items-center border border-base-content rounded-xl shadow shadow-base-content hover:shadow-lg hover:shadow-base-content overflow-hidden trasform-color duration-300"
   >
-    <%= link_to new_community_path, class: 'btn btn-primary transform-color duration-300' do %>
-      <%= inline_svg_tag 'icons/add', class: 'h-6 w-6' %>
-      Create Community
-    <% end %>
+    <div class="rounded-t-xl">
+      <%= image_tag 'community_main_sidebar' %>
+    </div>
+    <div class="p-8">
+      <p class="font-semibold pb-6">
+        Rubbit is home to thousands of communities, endless conversation, and authentic human connection. Whether you're into breaking news, sports, TV fan theories, or a never-ending stream of the internet's cutest animals, there's a community on Rubbit for you.
+      </p>
+      <%
+        add_btn_path =
+          user_signed_in? ? new_community_path : new_user_session_path
+      %>
+      <%= link_to add_btn_path, class: 'btn btn-primary transform-color duration-300' do %>
+        <%= inline_svg_tag 'icons/add', class: 'h-6 w-6' %>
+        Create Community
+      <% end %>
+    </div>
   </div>
 <% end %>
 

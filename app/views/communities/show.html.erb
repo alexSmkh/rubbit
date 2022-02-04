@@ -6,16 +6,22 @@
 
 <%= content_for :primary_content do %>
   <div>
-    <% @community.submissions.each do |submission| %>
-      <%= render 'submissions/submission', submission: submission %>
+    <% if @community.submissions.exists? %>
+      <% @community.submissions.each do |submission| %>
+        <%= render 'submissions/submission', submission: submission %>
+      <% end %>
+    <% else %>
+      <%= render 'submissions/submissions_dont_exist' %>
     <% end %>
   </div>
 <% end %>
 
 <%= content_for :secondary_content do %>
-  <%= link_to new_submission_path, class: 'hidden md:flex btn btn-primary w-full' do %>
-    <%= inline_svg_tag 'icons/add', class: 'h-6 w-6 mr-1' %>
-    <span>Create Submission</span>
+  <% if @community.submissions.exists? %>
+    <%= link_to new_submission_path, class: 'hidden md:flex btn btn-primary w-full mb-12' do %>
+      <%= inline_svg_tag 'icons/add', class: 'h-6 w-6 mr-1' %>
+      <span>Create Submission</span>
+    <% end %>
   <% end %>
 
   <%= render 'sidebar', community: @community %>

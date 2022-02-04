@@ -1,0 +1,20 @@
+<div
+  class="w-full border border-base-content p-10 rounded-xl shadow shadow-base-content hover:shadow-base-content hover:shadow-lg transition duration-300"
+>
+  <div class="flex items-center justify-center mb-6">
+    <%=
+      inline_svg_tag 'icons/empty',
+                     class: 'h-20 w-20 text-base-content mr-2 animate-bounce'
+    %>
+    <span class="text-3xl font-bold text-base-content"
+      >Oh.. There's nothing here yet</span
+    >
+  </div>
+  <% if user_signed_in? %>
+    <%=
+      link_to 'Create Submission',
+              new_submission_path,
+              class: 'btn btn-primary w-full'
+    %>
+  <% end %>
+</div>
