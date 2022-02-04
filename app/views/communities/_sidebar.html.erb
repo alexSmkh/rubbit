@@ -2,7 +2,7 @@
   class="border border-base-content shadow shadow-base-content hover:shadow-lg hover:shadow-base-content rounded-xl transform-color duration-300"
 >
   <div
-    class="flex justify-center items-center py-2 font-bold text-xl text-base-200 bg-accent rounded-t-xl"
+    class="flex justify-center items-center py-4 font-bold text-xl text-base-200 bg-accent rounded-t-xl"
   >
     Community details
   </div>
@@ -10,7 +10,9 @@
     <div class="flex justify-between mt-4">
       <div class="flex items-center font-semibold text-sm tracking-tight">
         <%= inline_svg_tag 'icons/community', class: 'h-6 w-6 mr-1' %>
-        <%= "r/#{community.title}" %>
+        <%= link_to community_path(community), class: 'transform-color hover:text-primary' do %>
+          <%= "r/#{community.title}" %>
+        <% end %>
       </div>
       <% if author_of?(community) %>
         <%= link_to edit_community_path(community) do %>
