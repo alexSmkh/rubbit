@@ -1,0 +1,27 @@
+<div class="flex justify-between">
+  <div>
+    <%= link_to "#", class: 'flex trasnform-color duration-300 hover:text-primary' do %>
+    <%= inline_svg_tag 'icons/community', class: 'w-6 h-6 mr-1' %>
+    1 Comment
+    <% end %>
+  </div>
+
+  <% if author_of?(submission) %>
+    <div class="flex items-center space-x-2">
+      <%= link_to edit_submission_path(submission) do %>
+        <%=
+          inline_svg_tag 'icons/edit',
+                         class:
+                           'h-5 w-5 text-base-content hover:text-primary transform-color duration-300'
+        %>
+      <% end %>
+      <%= link_to submission_path(submission), method: :delete, data: { confirm: 'Are you shure?'} do %>
+        <%=
+          inline_svg_tag 'icons/delete',
+                         class:
+                           'h-5 w-5 text-base-content hover:text-primary transform-color duration-300'
+        %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
