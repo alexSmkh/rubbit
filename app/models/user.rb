@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :communities
   has_many :submissions, dependent: :destroy
+  has_many :comments
 
   validates_uniqueness_of :username
 end

@@ -1,0 +1,7 @@
+var comments = document.getElementById('comments')
+var commentTextarea = document.getElementById('comment-reply')
+
+
+comments.insertAdjacentHTML('beforeend', '<%= escape_javascript(render(@comment)) %>')
+
+commentTextarea.value = ''

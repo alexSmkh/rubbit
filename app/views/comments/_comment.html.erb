@@ -1,0 +1,13 @@
+<div class="flex border border-base-content rounded-lg pl-1 md:pl-2">
+  <%= render 'comments/comment_voting' %>
+
+  <div class="flex-1 pl-2 py-4">
+    <div class="flex justify-between pr-1 md:pr-2">
+      <%= render 'submissions/posted_by', submission: comment %>
+      <%= render 'comments/comment_actions', comment: comment %>
+    </div>
+    <p>
+      <%= comment.reply %>
+    </p>
+  </div>
+</div>

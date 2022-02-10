@@ -1,0 +1,22 @@
+<%= form_for([@submission, @comment], remote: true) do |form| %>
+  <div class="form-control mb-2">
+    <%= form.label :reply, class: 'label' do %>
+      <span class="label-text">
+        comments as
+        <%= link_to "#" do %>
+          <span class="font-semibold hover:text-primary transform-color duration-300"><%=
+              current_user.username
+            %></span>
+        <% end %>
+      </span>
+    <% end %>
+    <%=
+      form.text_area :reply,
+                     id: 'comment-reply',
+                     class: 'textarea bg-base-content text-base-100',
+                     placeholder: 'Write your comment here'
+    %>
+  </div>
+
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>

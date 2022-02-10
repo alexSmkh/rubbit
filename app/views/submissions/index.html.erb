@@ -38,9 +38,11 @@
 <% end %>
 
 <%= content_for :secondary_content do %>
-  <%= link_to new_submission_path, class: 'btn btn-primary w-full mb-4' do %>
-    <%= inline_svg_tag 'icons/add', class: 'w-8 h-8 mr-1' %>
-    Create Submission
+  <% if @submissions.exists? %>
+    <%= link_to new_submission_path, class: 'btn btn-primary w-full mb-4' do %>
+      <%= inline_svg_tag 'icons/add', class: 'w-8 h-8 mr-1' %>
+      Create Submission
+    <% end %>
   <% end %>
 
   <%= link_to communities_path, class: 'btn btn-link' do %>

@@ -8,7 +8,9 @@ class SubmissionsController < ApplicationController
     @submissions = Submission.all
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   def new
     @submission = current_user.submissions.build

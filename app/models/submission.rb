@@ -6,6 +6,7 @@ class Submission < ApplicationRecord
 
   belongs_to :user
   belongs_to :community
+  has_many :comments
 
   validates :title, presence: true
   validates :url, url: true, allow_blank: true

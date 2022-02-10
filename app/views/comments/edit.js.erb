@@ -1,0 +1,8 @@
+var commentModal = document.getElementById('modal')
+var modalInner = commentModal.querySelector('.modal-inner')
+var bodyDocument = document.querySelector('body')
+
+modalInner.insertAdjacentHTML('afterbegin', "<%= escape_javascript(render partial: 'comments/modal') %>")
+commentModal.classList.replace('hidden', 'block')
+bodyDocument.classList.add('overflow-hidden')
+

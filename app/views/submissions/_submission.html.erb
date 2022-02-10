@@ -17,7 +17,7 @@
 
     <div class="flex">
       <%= render 'submissions/voting' %>
-      
+
       <div class="flex-1 overflow-hidden p-4">
         <%=
           link_to submission.title.truncate(30),
@@ -47,7 +47,15 @@
           <%= submission.url %>
         </div>
 
-        <%= render 'submissions/actions', submission: submission %>
+        <div class="flex justify-between">
+          <div>
+            <%= link_to submission_path(submission), class: 'flex trasnform-color duration-300 hover:text-primary' do %>
+              <%= inline_svg_tag 'icons/community', class: 'w-6 h-6 mr-1' %>
+              1 Comment
+            <% end %>
+          </div>
+          <%= render 'submissions/actions', submission: submission %>
+        </div>
       </div>
     </div>
   </div>
